@@ -1,15 +1,19 @@
 package com.company;
-public class Client{
- public static void main(String[] args) {
-        Koujyou koujyou1 = new TvKoujyou();
-        Koujyou koujyou2 = new RadioKoujyou();
-        Seihin[] array = new Seihin[3];
-        //koujyou1から配列に入れる
-        array[0] = koujyou1.create();
-        array[1] = koujyou2.create();
-        array[2] = koujyou1.create();
-        for (int i = 0; i < array.length; ++i) {
-        array[i].print();
-        }
-        }
-        }
+
+
+
+public class Client {
+    public static void main(String[] args) {
+    Suuchi s = new Suuchi();
+    Observer o1 = (Observer) new NishinHyouji();
+    Observer o2 = (Observer) new JyuurokushinHyouji();
+    s.attach(o1);
+    s.attach(o2);
+    s.detach(o1);
+
+    int i = 0;
+    while (i < 100) {
+        s.putValue(i); i += (int)(Math.random() * 30) - 10;
+    }
+}
+}
